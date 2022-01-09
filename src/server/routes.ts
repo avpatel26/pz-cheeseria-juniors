@@ -19,7 +19,8 @@ router.post('/api/purchaseItems/', jsonParser, (req,res) => {
     const purchaseId = purchases.length + 1;
     const purchaseItem = {
         purchaseId: purchaseId,
-        purchaseItems: req.body
+        purchaseItems: req.body.items,
+        purchaseTotal: req.body.total
     }
 
     // Prepend the purchased item in the array
@@ -35,6 +36,7 @@ router.post('/api/purchaseItems/', jsonParser, (req,res) => {
     }
 });
 
+// endpoint for the recently purchased items
 router.get('/api/purchaseItems', (req,res,next) => {
     res.json(purchases);
 });
