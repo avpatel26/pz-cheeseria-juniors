@@ -58,7 +58,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, emptyCart
   return (
     <Wrapper>
       <h2>Your Shopping Cart</h2>
-      {cartItems.length === 0 ? <p>No items in cart.</p> : null}
+      {cartItems.length === 0 ? <p><span data-cy={`empty-cart`} >No items in cart. </span></p> : null}
       {cartItems.map(item => (
         <CartItem
           key={item.id}
@@ -68,10 +68,15 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, emptyCart
         />
       ))}
       <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
-      <Button color="primary" variant="contained" onClick={handleClickOpenDialog}>Checkout</Button>
+      <Button
+        color="primary"
+        variant="contained"
+        onClick={handleClickOpenDialog}
+        data-cy={`checkout-items`}>Checkout</Button>
       <Dialog
           open={openDialog}
           onClose={handleCloseDialog}
+          data-cy={`purchase-dialog`}
         >
           <DialogTitle></DialogTitle>
           <DialogContent>
@@ -80,8 +85,8 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, emptyCart
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button color="primary" variant="contained" onClick={ () => postCartItem(cartItems) }>Purchase</Button>
-            <Button variant="contained" onClick={handleCloseDialog}>Cancel</Button>
+            <Button color="primary" variant="contained" onClick={ () => postCartItem(cartItems) }  data-cy={`purchase-button`}>Purchase</Button>
+            <Button variant="contained" onClick={handleCloseDialog}  data-cy={`cancel-purchase-button`}>Cancel</Button>
           </DialogActions>
     </Dialog>
     </Wrapper>

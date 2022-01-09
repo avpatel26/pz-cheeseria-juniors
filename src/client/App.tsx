@@ -91,7 +91,7 @@ const App = () => {
             justify="space-between"
             alignItems="center"
           >
-            <StyledButton onClick={()=>setRecentPurchaseOpen(true)}>
+            <StyledButton onClick={()=>setRecentPurchaseOpen(true)} data-cy="open-recent-purchase">
               <RestoreIcon />
               <Typography variant="subtitle2">
                 Recent Purchases
@@ -102,7 +102,7 @@ const App = () => {
               Welcome to Patient Zero's Cheeseria
             </HeaderTypography>
 
-            <StyledButton onClick={() => setCartOpen(true)}>
+            <StyledButton onClick={() => setCartOpen(true)} data-cy="open-cart">
               <Badge
                 badgeContent={getTotalItems(cartItems)}
                 color='error'

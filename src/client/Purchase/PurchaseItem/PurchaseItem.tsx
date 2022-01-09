@@ -13,7 +13,7 @@ const RecentPurchaseItem: React.FC<Props> = ({items,total}) => {
     {items?.map(item => (
          <div className="item">
            <div>
-             <h3>{item.title}</h3>
+             <h3><span data-cy={`purchase-${item.id}`}>{item.title}</span></h3>
              <div>
                <p>Amount: {item.amount}</p>
                <p>Total: ${(item.amount * item.price).toFixed(2)}</p>

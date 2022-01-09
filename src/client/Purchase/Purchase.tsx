@@ -27,7 +27,7 @@ const Purchase: React.FC = () => {
     return (
       <Wrapper>
         <h2>Recent Purchases</h2>
-        {data?.length === 0 ? <p>No Recent Purchase.</p> : null}
+        {data?.length === 0 ? <p><span data-cy={`empty-recent-purchase`}>No Recent Purchase.</span></p> : null}
         {data?.map(item => (
           <PurchaseItem
             items={item.purchaseItems}
