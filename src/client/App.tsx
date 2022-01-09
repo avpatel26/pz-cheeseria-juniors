@@ -39,6 +39,12 @@ const App = () => {
   const getTotalItems = (items: CartItemType[]) =>
     items.reduce((ack: number, item) => ack + item.amount, 0);
 
+  // Clears the cart
+  const handleEmptyCart = () => {
+    setCartItems([]);
+    setCartOpen(false);
+  }
+  
   const handleAddToCart = (clickedItem: CartItemType) => {
     setCartItems(prev => {
       // 1. Is the item already added in the cart?
@@ -116,6 +122,7 @@ const App = () => {
           cartItems={cartItems}
           addToCart={handleAddToCart}
           removeFromCart={handleRemoveFromCart}
+          emptyCart={handleEmptyCart}
         />
       </Drawer>
 
